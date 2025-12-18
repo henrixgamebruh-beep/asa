@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flappy Birdo</title>
+</head>
+
+<body style="background:#70c5ce; text-align:center;">
+
+  <h2>Flappy Birdo 🐦</h2>
+  <p>Pressione ESPAÇO para voar!</p>
+
+  <canvas id="game" width="300" height="400" style="background:#fff;"></canvas>
+
+  <script>
+    const canvas = document.getElementById("game");
+    const ctx = canvas.getContext("2d");
+
+    let y = 200;
+    let gravity = 1;
+    let velocity = 0;
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      velocity += gravity;
+      y += velocity;
+
+      ctx.fillStyle = "yellow";
+      ctx.fillRect(140, y, 20, 20);
+
+      requestAnimationFrame(draw);
+    }
+
+    document.addEventListener("keydown", function(e) {
+      if (e.code === "Space") {
+        velocity = -10;
+      }
+    });
+
+    draw();
+  </script>
+
+</body>
+</html>
